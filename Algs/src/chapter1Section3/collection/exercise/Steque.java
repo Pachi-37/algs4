@@ -10,12 +10,14 @@ public class Steque<Item> implements Iterator<Item> {
 
     @Override
     public boolean hasNext() {
-        return false;
+        return isEmpty();
     }
 
     @Override
     public Item next() {
-        return null;
+        Item item = pop();
+        push(item);
+        return item;
     }
 
     private class Node {
@@ -44,6 +46,7 @@ public class Steque<Item> implements Iterator<Item> {
         } else {
             last.next = newLast;
         }
+        nodeLength++;
         newLast.next = null;
     }
 
@@ -60,6 +63,7 @@ public class Steque<Item> implements Iterator<Item> {
             first = first.next;
             tmp.next = null;
         }
+        nodeLength--;
         return item;
     }
 
@@ -73,5 +77,6 @@ public class Steque<Item> implements Iterator<Item> {
             newFirst.next = first;
             first = newFirst;
         }
+        nodeLength++;
     }
 }
