@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author pachi
  * @deprecated 随机背包
  */
-public class RandomBag<Item> implements Iterator<Item> {
+public class RandomBag<Item> {
 
     private Item[] item;
     private int bagCapacity;
@@ -50,7 +50,7 @@ public class RandomBag<Item> implements Iterator<Item> {
         private int[] seq = new int[bagCapacity];
         private int index = 0;
 
-        public BagIterator() {
+        private BagIterator() {
             for (int i = 0; i < bagCapacity; i++) {
                 seq[i] = i;
             }
