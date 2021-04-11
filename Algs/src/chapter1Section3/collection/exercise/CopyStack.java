@@ -17,7 +17,7 @@ public class CopyStack<Item> extends Stack<Item> {
         for (int i = 0; i < size; i++) {
             val = s.peek();
             this.push(val);
-            stack.push(val)
+            stack.push(val);
         }
 
         s = stack;
