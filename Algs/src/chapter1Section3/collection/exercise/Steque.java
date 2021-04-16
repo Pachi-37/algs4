@@ -79,4 +79,10 @@ public class Steque<Item> implements Iterator<Item> {
         }
         nodeLength++;
     }
+
+    public void catenation(Steque<Item> seq){
+        while (!seq.isEmpty()){
+            this.push(seq.pop());
+        }
+    }
 }
