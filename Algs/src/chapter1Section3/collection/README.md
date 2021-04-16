@@ -66,3 +66,8 @@ private class Node{
 ```java
 Stack<String>[] stack = (Stack<String>[]) new Stack[N];
 ```
+
+## 1.3.46
+栈中生成问题禁止出现的排列
+
+如果出现 `abc---` 的排序，最终生成排序的结果为 `cba` 不符合条件
