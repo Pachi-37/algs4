@@ -1,10 +1,12 @@
 package chapter1Section3.collection.exercise;
 
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 
 /**
  * @author pachi
- * @deprecated 编写一个使用双向链表实现 `Deque` 类，以及使用动态数组调整实现的 `ResizingArrayDeque`
+ * @deprecated 编写一个使用双向链表实现 `Deque` 类，以及使用动态数组调整实现的 `ResizingArrayDeque` 1.3.46双向队列与栈
  */
 public class Deque<Item> implements Iterator<Item> {
 
@@ -12,6 +14,11 @@ public class Deque<Item> implements Iterator<Item> {
         Item item;
         Node prev;
         Node next;
+
+        Node(){
+            prev = null;
+            next = null;
+        }
     }
 
     private Node right;
@@ -23,7 +30,7 @@ public class Deque<Item> implements Iterator<Item> {
     }
 
     public boolean isEmpty() {
-        return right == left;
+        return dequeLength == 0;
     }
 
     public int size() {
@@ -34,36 +41,32 @@ public class Deque<Item> implements Iterator<Item> {
         Node newLeft = new Node();
         newLeft.item = item;
         if (isEmpty()) {
+            left = newLeft;
             right = left;
-            right.next = null;
-            left.prev = null;
         } else {
             newLeft.next = left;
             left = newLeft;
-            dequeLength++;
         }
+        dequeLength++;
     }
 
     public void pushRight(Item item) {
         Node newRight = new Node();
         newRight.item = item;
         if (isEmpty()) {
-            right = left;
-            right.next = null;
-            left.prev = null;
+            right = newRight;
+            left = right;
         } else {
             newRight.prev = right;
             right = newRight;
-            dequeLength++;
         }
+        dequeLength++;
     }
 
-    public Item getRight(){
+    public Item getRight() {
         Item item;
         if (isEmpty()) {
             right = left;
-            right.next = null;
-            left.prev = null;
             throw new RuntimeException("The dequeue is empty");
         }
         item = right.item;
@@ -88,9 +91,6 @@ public class Deque<Item> implements Iterator<Item> {
         Item item;
         if (isEmpty()) {
             right = left;
-            right.next = null;
-            left.prev = null;
-            throw new RuntimeException("The dequeue is empty");
         }
         right = right.prev;
         item = right.item;
@@ -107,5 +107,18 @@ public class Deque<Item> implements Iterator<Item> {
     @Override
     public Item next() {
         return getRight();
+    }
+
+    public static void main(String[] args) {
+        Deque<Integer> twoStackWithQueue = new Deque<>();
+
+        for (int i = 0; i < 3; i++) {
+            twoStackWithQueue.pushRight(i);
+        }
+
+        StdOut.println(twoStackWithQueue.popRight());
+        for (int i = 0; i < 5; i++) {
+            twoStackWithQueue.pushLeft(i);
+        }
     }
 }
