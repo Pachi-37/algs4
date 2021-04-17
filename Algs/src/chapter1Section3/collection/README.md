@@ -95,3 +95,5 @@ Stack<String>[] stack = (Stack<String>[]) new Stack[N];
 * 头部栈为空，尾部栈的副本向它传递元素
 * `head - r` 为空时，将 `head` 中的元素倒入到 `head - r`
 * `head` 为空时，`head - r` 需要将元素放入到 `head - 1`
+
+
