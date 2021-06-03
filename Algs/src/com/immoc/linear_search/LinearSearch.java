@@ -4,6 +4,8 @@ package com.immoc.linear_search;
  * @author pachi
  */
 public class LinearSearch {
+    private LinearSearch(){}
+
     public static int search(int[] data, int target) {
         for (int i = 0; i < data.length; i++) {
             if (data[i] == target) {
