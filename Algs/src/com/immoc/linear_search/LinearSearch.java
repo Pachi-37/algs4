@@ -4,7 +4,8 @@ package com.immoc.linear_search;
  * @author pachi
  */
 public class LinearSearch {
-    private LinearSearch(){}
+    private LinearSearch() {
+    }
 
     public static <E> int search(E[] data, E target) {
         for (int i = 0; i < data.length; i++) {
@@ -25,5 +26,9 @@ public class LinearSearch {
 
         int result = LinearSearch.search(data, 1);
         System.out.println(result);
+
+        Student[] students = {new Student("Alice"), new Student("Tom"), new Student("Jerry")};
+        Student target = new Student("Tom");
+        System.out.println(LinearSearch.search(students,target));
     }
 }
