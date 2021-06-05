@@ -19,16 +19,15 @@ public class LinearSearch {
 
     public static void main(String[] args) {
 
-        Integer[] data = {24, 18, 12, 9, 16, 66, 32, 4};
+        Integer[] data = ArrayGenerator.generateOrderedArray(4000);
 
-        int res = LinearSearch.<Integer>search(data, 16);
-        System.out.println(res);
+        long start = System.nanoTime();
 
-        int result = LinearSearch.search(data, 1);
-        System.out.println(result);
+        LinearSearch.search(data, 4000);
 
-        Student[] students = {new Student("Alice"), new Student("Tom"), new Student("Jerry")};
-        Student target = new Student("Tom");
-        System.out.println(LinearSearch.search(students,target));
+        long end = System.nanoTime();
+
+        double time = (end - start) / 1000000000.0;
+        System.out.println(time + "s");
     }
 }
