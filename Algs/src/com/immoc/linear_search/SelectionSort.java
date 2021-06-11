@@ -39,7 +39,18 @@ public class SelectionSort {
 
         for (int e :
                 tmp) {
-            System.out.print(e);
+            System.out.print(e + " ");
+        }
+
+        System.out.println();
+
+        Student[] students = {new Student("Tom", 32), new Student("Jerry", 43), new Student("Duck", 34)};
+
+        SelectionSort.sort(students);
+
+        for (Student student :
+                students) {
+            System.out.println(student + " ");
         }
     }
 }
