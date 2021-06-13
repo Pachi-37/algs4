@@ -33,24 +33,16 @@ public class SelectionSort {
 
     public static void main(String[] args) {
 
-        Integer[] tmp = {1, 2, 3, 1, 3, 1, 4, 5, 1, 3};
+        int n = 1000;
+        Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+        long startTime = System.nanoTime();
+        SelectionSort.sort(arr);
+        long endTime = System.nanoTime();
 
-        SelectionSort.sort(tmp);
-
-        for (int e :
-                tmp) {
-            System.out.print(e + " ");
+        if (!SortingHelper.isSorted(arr)){
+            throw new RuntimeException("SelectionSort failed");
         }
 
-        System.out.println();
-
-        Student[] students = {new Student("Tom", 32), new Student("Jerry", 43), new Student("Duck", 34)};
-
-        SelectionSort.sort(students);
-
-        for (Student student :
-                students) {
-            System.out.println(student + " ");
-        }
+        System.out.println("Time: " + (double)(endTime - startTime) / 1000000000);
     }
 }
