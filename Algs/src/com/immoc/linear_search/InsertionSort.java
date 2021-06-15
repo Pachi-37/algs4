@@ -8,9 +8,13 @@ public class InsertionSort {
     public static <E extends Comparable<E>> void sort(E[] arr) {
 
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (arr[j].compareTo(arr[i]) >= 0) {
-                    insertTo(arr, j, i);
+
+            // 将 arr[i] 插入到合适的位置
+            for (int j = i; j - 1 >= 0; j--) {
+                if (arr[j].compareTo(arr[j - 1]) < 0) {
+                    swap(arr, j, j - 1);
+                } else {
+                    break;
                 }
             }
         }
@@ -23,6 +27,12 @@ public class InsertionSort {
         if (order + 1 < index) {
             arr[order + 1] = tmp;
         }
+    }
+
+    private static <E> void swap(E[] arr, int i, int j) {
+        E tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     public static void main(String[] args) {
