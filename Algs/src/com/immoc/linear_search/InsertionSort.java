@@ -23,6 +23,21 @@ public class InsertionSort {
         }
     }
 
+    public static <E extends Comparable<E>> void sort2(E[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+
+            E tmp = arr[i];
+
+            int j;
+            for (j = i; j - 1 >= 0 && tmp.compareTo(arr[j - 1]) < 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+
+            arr[j] = tmp;
+        }
+    }
+
     private static <E> void insertTo(E[] arr, int order, int index) {
         E tmp = arr[index];
 
@@ -39,12 +54,18 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] dataSize = {1000, 100};
-        for (int n :
-                dataSize) {
-            Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+        int n = 100;
 
-            SortingHelper.sortTest("InsertionSort", arr);
-        }
+        Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+
+        SortingHelper.sortTest("InsertionSort", arr);
+
+
+        long startTime = System.nanoTime();
+        InsertionSort.sort2(arr);
+        long endTime = System.nanoTime();
+        double time = (endTime - startTime) / 1000000000.0;
+
+        System.out.println(String.format("%s , n = %d : %f s", "InsertionSort", arr.length, time));
     }
 }
