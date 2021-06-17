@@ -23,6 +23,21 @@ public class InsertionSort {
         }
     }
 
+    public static <E extends Comparable<E>> void sort3(E[] arr){
+        // 改变循环不变量实现插入排序
+
+        int len = arr.length;
+        for (int i = len - 2; i > 0; i--) {
+            E tmp = arr[i];
+
+            int j;
+            for (j = i; j + 1 < len && arr[j].compareTo(arr[j + 1]) > 0; j++) {
+                arr[j] = arr[j + 1];
+            }
+            arr[j] = tmp;
+        }
+    }
+
     public static <E extends Comparable<E>> void sort2(E[] arr) {
 
         for (int i = 0; i < arr.length; i++) {
@@ -54,7 +69,7 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int n = 100;
+        int n = 10000;
 
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
 
