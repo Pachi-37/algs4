@@ -108,8 +108,9 @@ public class Array {
 
     /**
      * 设置 index 索引位置元素的值
+     *
      * @param index 索引
-     * @param val 待更改的值
+     * @param val   待更改的值
      */
     public void set(int index, int val) {
         if (index < 0 || index >= size) {
@@ -117,6 +118,86 @@ public class Array {
         }
 
         data[index] = val;
+    }
+
+    /**
+     * 查看数组中是否包含 val 元素
+     *
+     * @param val 待查找元素
+     * @return 有 真 无 假
+     */
+    public boolean contains(int val) {
+
+        for (int i = 0; i < size; i++) {
+            if (val == data[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 查找数组中元素，并返回其对应的索引，如果未查找到返回 -1
+     *
+     * @param val 待查找元素
+     * @return 返回索引（或 -1）
+     */
+    public int find(int val) {
+
+        for (int i = 0; i < size; i++) {
+            if (val == data[i]) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 删除指定索引的元素
+     *
+     * @param index 索引
+     * @return 删除的元素
+     */
+    public int remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Require index >= 0 and index < size.");
+        }
+
+        int ret = data[index];
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return ret;
+    }
+
+    /**
+     * 删除第一个元素，并返回其值
+     * @return 返回删除值
+     */
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除最后一个元素，并返回其值
+     * @return 返回最后一个元素
+     */
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
+     * 删除元素
+     * @param val 待删除元素
+     */
+    public void removeElement(int val){
+        int index = find(val);
+        if (index != -1){
+            remove(index);
+        }
     }
 
     @Override
