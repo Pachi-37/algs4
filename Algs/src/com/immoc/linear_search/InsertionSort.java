@@ -27,7 +27,7 @@ public class InsertionSort {
         // 改变循环不变量实现插入排序
 
         int len = arr.length;
-        for (int i = len - 2; i > 0; i--) {
+        for (int i = len - 2; i >= 0; i--) {
             E tmp = arr[i];
 
             int j;
