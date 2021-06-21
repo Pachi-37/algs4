@@ -71,6 +71,16 @@ public class Array<E> {
         add(0, val);
     }
 
+    private void resize(int length) {
+        E[] newDate = (E[]) new Object[length];
+
+        for (int i = 0; i < size; i++) {
+            newDate[i] = data[i];
+        }
+
+        data = newDate;
+    }
+
     /**
      * 根据索引插入元素
      *
@@ -78,13 +88,15 @@ public class Array<E> {
      * @param val   待插入元素
      */
     public void add(int index, E val) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("Add failed. Array is full.");
-        }
 
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
         }
+
+        if (size == data.length) {
+            resize(2 * data.length);
+        }
+
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
@@ -172,6 +184,11 @@ public class Array<E> {
         size--;
         // 垃圾回收
         data[size] = null;
+
+        if (size < data.length / 4) {
+            resize(size * 2);
+        }
+
         return ret;
     }
 
@@ -230,6 +247,27 @@ public class Array<E> {
             array.addLast(i);
         }
 
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
+        array.addFirst(-1);
         array.addFirst(-1);
 
         System.out.println(array.toString());
