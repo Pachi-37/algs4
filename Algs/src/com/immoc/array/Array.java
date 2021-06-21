@@ -4,9 +4,9 @@ package com.immoc.array;
  * @author pachi
  * @date 2021-6-19
  */
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     /**
@@ -15,7 +15,7 @@ public class Array {
      * @param capacity 数组容量
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -58,7 +58,7 @@ public class Array {
      *
      * @param val 追加元素
      */
-    public void addLast(int val) {
+    public void addLast(E val) {
         add(size, val);
     }
 
@@ -67,7 +67,7 @@ public class Array {
      *
      * @param val 元素
      */
-    public void addFirst(int val) {
+    public void addFirst(E val) {
         add(0, val);
     }
 
@@ -77,7 +77,7 @@ public class Array {
      * @param index 索引
      * @param val   待插入元素
      */
-    public void add(int index, int val) {
+    public void add(int index, E val) {
         if (size == data.length) {
             throw new IllegalArgumentException("Add failed. Array is full.");
         }
@@ -98,7 +98,7 @@ public class Array {
      * @param index 索引
      * @return 返回位置取值
      */
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Require index >= 0 and index < size");
         }
@@ -112,7 +112,7 @@ public class Array {
      * @param index 索引
      * @param val   待更改的值
      */
-    public void set(int index, int val) {
+    public void set(int index, E val) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Set failed. Require index >= 0 and index < size");
         }
@@ -126,10 +126,10 @@ public class Array {
      * @param val 待查找元素
      * @return 有 真 无 假
      */
-    public boolean contains(int val) {
+    public boolean contains(E val) {
 
         for (int i = 0; i < size; i++) {
-            if (val == data[i]) {
+            if (val.equals(data[i])) {
                 return true;
             }
         }
@@ -143,10 +143,10 @@ public class Array {
      * @param val 待查找元素
      * @return 返回索引（或 -1）
      */
-    public int find(int val) {
+    public int find(E val) {
 
         for (int i = 0; i < size; i++) {
-            if (val == data[i]) {
+            if (val.equals(data[i])) {
                 return i;
             }
         }
@@ -160,42 +160,47 @@ public class Array {
      * @param index 索引
      * @return 删除的元素
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove failed. Require index >= 0 and index < size.");
         }
 
-        int ret = data[index];
+        E ret = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
+        // 垃圾回收
+        data[size] = null;
         return ret;
     }
 
     /**
      * 删除第一个元素，并返回其值
+     *
      * @return 返回删除值
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
     /**
      * 删除最后一个元素，并返回其值
+     *
      * @return 返回最后一个元素
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
     /**
      * 删除元素
+     *
      * @param val 待删除元素
      */
-    public void removeElement(int val){
+    public void removeElement(E val) {
         int index = find(val);
-        if (index != -1){
+        if (index != -1) {
             remove(index);
         }
     }
@@ -219,7 +224,7 @@ public class Array {
 
     public static void main(String[] args) {
 
-        Array array = new Array(20);
+        Array<Integer> array = new Array<>(20);
 
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
