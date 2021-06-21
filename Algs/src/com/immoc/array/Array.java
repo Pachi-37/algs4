@@ -247,28 +247,13 @@ public class Array<E> {
             array.addLast(i);
         }
 
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
-        array.addFirst(-1);
+        array.removeFirst();
+        array.removeFirst();
+        array.removeFirst();
+        array.removeFirst();
+        array.removeFirst();
+        array.removeFirst();
+        array.removeFirst();
 
         System.out.println(array.toString());
     }
