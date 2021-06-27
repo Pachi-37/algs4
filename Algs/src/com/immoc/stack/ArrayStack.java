@@ -15,6 +15,12 @@ public class ArrayStack<E> implements Stack<E> {
         data = new Array<>(capacity);
     }
 
+    public ArrayStack(){}
+
+    public int getCapacity(){
+        return data.getCapacity();
+    }
+
     @Override
     public void push(E val) {
         data.addFirst(val);
@@ -22,12 +28,12 @@ public class ArrayStack<E> implements Stack<E> {
 
     @Override
     public E pop() {
-        return data.get(0);
+        return data.removeFirst();
     }
 
     @Override
     public E peek() {
-        return data.removeFirst();
+        return data.get(0);
     }
 
     @Override
