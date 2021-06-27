@@ -36,6 +36,22 @@ public class Array<E> {
     }
 
     /**
+     * 获取数组最后一个元素
+     * @return 尾元素
+     */
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    /**
+     * 返回数组中第一个值
+     * @return 首元素
+     */
+    public E getFirst(){
+        return get(0);
+    }
+
+    /**
      * 获取数组容量
      *
      * @return 容量
