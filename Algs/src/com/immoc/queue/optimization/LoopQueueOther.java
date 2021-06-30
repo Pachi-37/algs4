@@ -60,22 +60,12 @@ public class LoopQueueOther<E> implements Queue<E> {
 
     @Override
     public int getSize() {
-
-        if (front < tail) {
-            return tail - front;
-        } else {
-            return data.length - (front - tail);
-        }
+        return tail >= front ? tail - front : tail - front + data.length;
     }
 
     @Override
     public boolean isEmpty() {
-
-        if (front == tail) {
-            return true;
-        }
-
-        return false;
+        return front == tail;
     }
 
     public int getCapacity() {
