@@ -103,7 +103,7 @@ public class LinkedList<E> {
     public E get(int index) {
 
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Get value failed, index illegal.");
+            throw new IllegalArgumentException("Get value failed, index is illegal.");
         }
 
         Node cur = dummyHead.next;
@@ -142,7 +142,7 @@ public class LinkedList<E> {
     public void set(int index, E val) {
 
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Get value failed, index illegal.");
+            throw new IllegalArgumentException("Get value failed, index is illegal.");
         }
 
         Node cur = dummyHead.next;
@@ -180,6 +180,47 @@ public class LinkedList<E> {
         return false;
     }
 
+    /**
+     * 从链表中删除一个元素
+     *
+     * @param index 索引
+     * @return 删除元素
+     */
+    public E remove(int index) {
+
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Get value failed, index is illegal.");
+        }
+
+        Node cur = dummyHead;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+
+        Node delNode = cur.next;
+        cur.next = delNode.next;
+        delNode.next = null;
+        size--;
+
+        return delNode.e;
+    }
+
+    /**
+     * 删除第一个元素
+     * @return 删除链表头
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除链表尾元素
+     * @return 删除链表尾
+     */
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
     @Override
     public String toString() {
 
@@ -188,7 +229,7 @@ public class LinkedList<E> {
         res.append("Head ");
 
         for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
-           res.append(cur).append(" -> ");
+            res.append(cur).append(" -> ");
         }
         res.append("NULL");
 
@@ -202,5 +243,10 @@ public class LinkedList<E> {
             linkedList.addFirst(i);
             System.out.println(linkedList);
         }
+
+        linkedList.add(2,32);
+        System.out.println(linkedList);
+        linkedList.remove(2);
+        System.out.println(linkedList);
     }
 }
