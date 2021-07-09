@@ -4,7 +4,7 @@ package com.leetcode.question203;
  * @author pachi
  */
 public class Soultion {
-    public static ListNode removeElements(ListNode head, int val) {
+    public ListNode removeElements(ListNode head, int val) {
 
         while (head != null && head.val == val) {
             ListNode delNode = head;
@@ -32,19 +32,13 @@ public class Soultion {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        ListNode cur = new ListNode(2);
-        head.next = cur;
-        cur.next = new ListNode(6);
-        cur = cur.next;
-        cur.next = new ListNode(4);
 
-        Soultion.removeElements(head, 7);
+        int[] nums = {0, 1, 2, 3, 4, 5, 6, 7};
+        ListNode head = new ListNode(nums);
+        System.out.println(head);
 
-        while (head != null) {
-            System.out.println(head.val);
-            head = head.next;
-        }
+        ListNode res = (new Soultion()).removeElements(head, 6);
+        System.out.println(res);
     }
 }
 
