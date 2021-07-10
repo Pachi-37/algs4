@@ -39,6 +39,20 @@ public class Soultion {
 
         ListNode res = (new Soultion()).removeElements(head, 6);
         System.out.println(res);
+
+        System.out.println(sum(nums));
+    }
+
+    public static int sum(int[] arr) {
+        return sum(arr, 0);
+    }
+
+    public static int sum(int[] arr, int l) {
+
+        if (l == arr.length) {
+            return 0;
+        }
+        return arr[l] + sum(arr, l + 1 );
     }
 }
 
