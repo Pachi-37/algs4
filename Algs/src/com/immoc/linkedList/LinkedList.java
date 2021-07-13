@@ -207,6 +207,7 @@ public class LinkedList<E> {
 
     /**
      * 删除第一个元素
+     *
      * @return 删除链表头
      */
     public E removeFirst() {
@@ -215,6 +216,7 @@ public class LinkedList<E> {
 
     /**
      * 删除链表尾元素
+     *
      * @return 删除链表尾
      */
     public E removeLast() {
@@ -244,7 +246,7 @@ public class LinkedList<E> {
             System.out.println(linkedList);
         }
 
-        linkedList.add(2,32);
+        linkedList.add(2, 32);
         System.out.println(linkedList);
         linkedList.remove(2);
         System.out.println(linkedList);
