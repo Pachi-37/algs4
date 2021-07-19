@@ -3,6 +3,7 @@ package com.imooc.sort.merge;
 import com.immoc.array.Array;
 import com.immoc.linear_search.ArrayGenerator;
 import com.immoc.linear_search.SortingHelper;
+import com.immoc.utils.GenerateDepthString;
 
 import java.util.Arrays;
 
@@ -15,19 +16,33 @@ public class MergeSort {
     }
 
     public static <E extends Comparable<E>> void sort(E[] arr) {
-        sort(arr, 0, arr.length - 1);
+        sort(arr, 0, arr.length - 1, 0);
     }
 
-    private static <E extends Comparable<E>> void sort(E[] arr, int l, int r) {
+    private static <E extends Comparable<E>> void sort(E[] arr, int l, int r, int depth) {
+
+        String depthString = GenerateDepthString.generate(depth);
+        System.out.println(depthString + String.format("mergeSort arr [%d, %d]", l, r));
 
         if (l >= r) {
             return;
         }
 
         int mid = (l + r) / 2;
-        sort(arr, l, mid);
-        sort(arr, mid + 1, r);
+        sort(arr, l, mid, depth + 1);
+        sort(arr, mid + 1, r, depth + 1);
+
+        System.out.print(depthString);
+        System.out.println(String.format("merge arr [%d, %d] and arr [%d, %d]", l, mid, mid + 1, r));
         merge(arr, l, mid, r);
+
+        System.out.print(depthString);
+        System.out.println(String.format("after mergeSort arr [%d, %d]", l, r));
+        for (E e :
+                arr) {
+            System.out.print(e + " ");
+        }
+        System.out.println();
     }
 
     /**
@@ -66,7 +81,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
 
-        int n = 100000;
+        int n = 8;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
 
         SortingHelper.sortTest("MergeSort", arr);
