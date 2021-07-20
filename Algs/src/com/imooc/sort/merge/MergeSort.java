@@ -32,9 +32,11 @@ public class MergeSort {
         sort(arr, l, mid, depth + 1);
         sort(arr, mid + 1, r, depth + 1);
 
-        System.out.print(depthString);
-        System.out.println(String.format("merge arr [%d, %d] and arr [%d, %d]", l, mid, mid + 1, r));
-        merge(arr, l, mid, r);
+        if (arr[mid].compareTo(arr[mid + 1]) > 0) {
+            System.out.print(depthString);
+            System.out.println(String.format("merge arr [%d, %d] and arr [%d, %d]", l, mid, mid + 1, r));
+            merge(arr, l, mid, r);
+        }
 
         System.out.print(depthString);
         System.out.println(String.format("after mergeSort arr [%d, %d]", l, r));
