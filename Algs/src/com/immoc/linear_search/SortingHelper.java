@@ -1,6 +1,7 @@
 package com.immoc.linear_search;
 
 import com.imooc.sort.merge.MergeSort;
+import com.imooc.sort.merge.MergeSort2;
 
 /**
  * @author pachi
@@ -27,11 +28,13 @@ public class SortingHelper {
 
         if (sortName.equals("SelectionSort")) {
             SelectionSort.sort(arr);
-        } else if (sortName.equals("InsertionSort")){
+        } else if (sortName.equals("InsertionSort")) {
             InsertionSort.sort(arr);
             InsertionSort.sort3(arr);
         } else if (sortName.equals("MergeSort")) {
             MergeSort.sort(arr);
+        } else if (sortName.equals("MergeSortBU")) {
+            MergeSort2.sort(arr);
         }
 
         long endTime = System.nanoTime();
