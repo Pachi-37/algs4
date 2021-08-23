@@ -1,5 +1,6 @@
 package com.immoc.linear_search;
 
+import com.immoc.quick.QuickSort;
 import com.imooc.sort.merge.MergeSort;
 import com.imooc.sort.merge.MergeSort2;
 
@@ -35,6 +36,8 @@ public class SortingHelper {
             MergeSort.sort(arr);
         } else if (sortName.equals("MergeSortBU")) {
             MergeSort2.sort(arr);
+        } else if (sortName.equals("QuickSort")) {
+            QuickSort.sort(arr);
         }
 
         long endTime = System.nanoTime();
