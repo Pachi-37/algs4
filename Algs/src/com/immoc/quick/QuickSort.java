@@ -32,18 +32,19 @@ public class QuickSort {
 
             if (data[i].compareTo(data[l]) < 0) {
                 splitPoint++;
-
-                temp = data[i];
-                data[i] = data[splitPoint];
-                data[splitPoint] = temp;
+                swap(data, splitPoint, i);
             }
         }
 
-        temp = data[l];
-        data[l] = data[splitPoint];
-        data[splitPoint] = data[l];
+        swap(data, splitPoint, l);
 
         return splitPoint;
+    }
+
+    private static <E> void swap(E[] data, int l, int r) {
+        E temp = data[l];
+        data[l] = data[r];
+        data[r] = temp;
     }
 
     public static void main(String[] args) {
