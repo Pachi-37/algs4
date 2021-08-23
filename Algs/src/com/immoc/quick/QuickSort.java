@@ -9,7 +9,7 @@ public class QuickSort {
     }
 
     public static <E extends Comparable<E>> void sort(E[] data) {
-
+        sort(data, 0, data.length - 1);
     }
 
     private static <E extends Comparable<E>> void sort(E[] data, int l, int r) {
@@ -18,20 +18,32 @@ public class QuickSort {
             return;
         }
 
+        int splitPoint = partition(data, l, r);
+        sort(data, l, splitPoint - 1);
+        sort(data, splitPoint + 1, r);
+    }
+
+    private static <E extends Comparable<E>> int partition(E[] data, int l, int r) {
+
         int splitPoint = l;
         E temp = data[l];
 
-        for (int i = splitPoint + 1; i < r; i++) {
+        for (int i = splitPoint + 1; i <= r; i++) {
 
             if (data[i].compareTo(data[l]) < 0) {
                 splitPoint++;
-                if (i - splitPoint > 1) {
-                    temp = data[i];
-                    data[i] = data[splitPoint];
-                    data[splitPoint] = temp;
-                }
+
+                temp = data[i];
+                data[i] = data[splitPoint];
+                data[splitPoint] = temp;
             }
         }
+
+        temp = data[l];
+        data[l] = data[splitPoint];
+        data[splitPoint] = data[l];
+
+        return splitPoint;
     }
 
     public static void main(String[] args) {
