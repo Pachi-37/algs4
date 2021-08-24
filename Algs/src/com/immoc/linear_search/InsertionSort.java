@@ -2,7 +2,7 @@ package com.immoc.linear_search;
 
 public class InsertionSort {
 
-    private InsertionSort() {
+    public InsertionSort() {
     }
 
     public static <E extends Comparable<E>> void sort(E[] arr) {

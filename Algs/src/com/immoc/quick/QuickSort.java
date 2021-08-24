@@ -1,6 +1,7 @@
 package com.immoc.quick;
 
 import com.immoc.linear_search.ArrayGenerator;
+import com.immoc.linear_search.InsertionSort;
 import com.immoc.linear_search.SortingHelper;
 
 public class QuickSort {
@@ -15,6 +16,9 @@ public class QuickSort {
     private static <E extends Comparable<E>> void sort(E[] data, int l, int r) {
 
         if (l >= r) {
+            return;
+        } else if (r - l < 20) {
+            InsertionSort.sort(data);
             return;
         }
 
