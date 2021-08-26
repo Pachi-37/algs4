@@ -30,7 +30,11 @@ public class QuickSort {
     private static <E extends Comparable<E>> int partition(E[] data, int l, int r) {
 
         int splitPoint = l;
-        E temp = data[l];
+        int mid = (l + r) / 2;
+
+        E temp = data[mid];
+        data[mid] = data[l];
+        data[l] = temp;
 
         for (int i = splitPoint + 1; i <= r; i++) {
 
