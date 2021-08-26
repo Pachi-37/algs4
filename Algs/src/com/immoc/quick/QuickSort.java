@@ -4,12 +4,18 @@ import com.immoc.linear_search.ArrayGenerator;
 import com.immoc.linear_search.InsertionSort;
 import com.immoc.linear_search.SortingHelper;
 
+import java.util.Scanner;
+
 public class QuickSort {
+
+    public static Scanner randomNum = new Scanner(System.in);
 
     private QuickSort() {
     }
 
     public static <E extends Comparable<E>> void sort(E[] data) {
+
+
         sort(data, 0, data.length - 1);
     }
 
@@ -30,10 +36,10 @@ public class QuickSort {
     private static <E extends Comparable<E>> int partition(E[] data, int l, int r) {
 
         int splitPoint = l;
-        int mid = (l + r) / 2;
+        int randomIndex = randomNum.nextInt(r - l + 1) + l;
 
-        E temp = data[mid];
-        data[mid] = data[l];
+        E temp = data[randomIndex];
+        data[randomIndex] = data[l];
         data[l] = temp;
 
         for (int i = splitPoint + 1; i <= r; i++) {
