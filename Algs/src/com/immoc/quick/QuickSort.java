@@ -4,22 +4,21 @@ import com.immoc.linear_search.ArrayGenerator;
 import com.immoc.linear_search.InsertionSort;
 import com.immoc.linear_search.SortingHelper;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class QuickSort {
-
-    public static Scanner randomNum = new Scanner(System.in);
 
     private QuickSort() {
     }
 
     public static <E extends Comparable<E>> void sort(E[] data) {
 
+        Random rnd = new Random();
 
-        sort(data, 0, data.length - 1);
+        sort(data, 0, data.length - 1, rnd);
     }
 
-    private static <E extends Comparable<E>> void sort(E[] data, int l, int r) {
+    private static <E extends Comparable<E>> void sort(E[] data, int l, int r, Random rnd) {
 
         if (l >= r) {
             return;
@@ -28,19 +27,18 @@ public class QuickSort {
             return;
         }
 
-        int splitPoint = partition(data, l, r);
-        sort(data, l, splitPoint - 1);
-        sort(data, splitPoint + 1, r);
+        int splitPoint = partition(data, l, r, rnd);
+        sort(data, l, splitPoint - 1, rnd);
+        sort(data, splitPoint + 1, r, rnd);
     }
 
-    private static <E extends Comparable<E>> int partition(E[] data, int l, int r) {
+    private static <E extends Comparable<E>> int partition(E[] data, int l, int r, Random rnd) {
 
         int splitPoint = l;
-        int randomIndex = randomNum.nextInt(r - l + 1) + l;
+//        int randomIndex = rnd.nextInt(r - l + 1) + l;
+        int randomIndex = (l + r) / 2;
 
-        E temp = data[randomIndex];
-        data[randomIndex] = data[l];
-        data[l] = temp;
+        swap(data, randomIndex, l);
 
         for (int i = splitPoint + 1; i <= r; i++) {
 
@@ -62,7 +60,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        Integer[] data = ArrayGenerator.generateRandomArray(10, 10);
+        Integer[] data = ArrayGenerator.generateRandomArray(1000, 1000);
 
         SortingHelper.sortTest("QuickSort", data);
     }
