@@ -35,8 +35,8 @@ public class QuickSort {
     private static <E extends Comparable<E>> int partition(E[] data, int l, int r, Random rnd) {
 
         int splitPoint = l;
-//        int randomIndex = rnd.nextInt(r - l + 1) + l;
-        int randomIndex = (l + r) / 2;
+        int randomIndex = rnd.nextInt(r - l + 1) + l;
+//        int randomIndex = (l + r) / 2;
 
         swap(data, randomIndex, l);
 

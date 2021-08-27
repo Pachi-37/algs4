@@ -1,9 +1,6 @@
 package com.immoc.special_case;
 
 import com.immoc.linear_search.SortingHelper;
-import com.immoc.quick.QuickSort;
-
-import java.util.Scanner;
 
 /**
  * @author pachi
